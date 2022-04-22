@@ -33,7 +33,7 @@ while (userInput != "exit")
         case "usdToRub":
             Console.WriteLine("Сколько долларов желаете перевести в рубли?");
             currentValue = Convert.ToDouble(Console.ReadLine());
-            if(usd < currentValue)
+            if (usd < currentValue)
             {
                 Console.WriteLine("Недостаточно средств для совершения операции");
             }
@@ -44,7 +44,7 @@ while (userInput != "exit")
             else
             {
                 usd -= currentValue;
-                rub += (currentValue*usdToRub);
+                rub += (currentValue * usdToRub);
                 Console.WriteLine($"Ваш баланс: {rub} рублей, {usd} долларов, {eur} евро");
             }
             break;
@@ -139,7 +139,7 @@ while (userInput != "exit")
             }
             break;
         case "exit":
-            
+
             break;
         default:
             Console.WriteLine("Не знаю такой команды");
