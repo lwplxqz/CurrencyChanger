@@ -33,9 +33,13 @@ while (userInput != "exit")
         case "usdToRub":
             Console.WriteLine("Сколько долларов желаете перевести в рубли?");
             currentValue = Convert.ToDouble(Console.ReadLine());
-            if((currentValue*usdToRub)<1)
+            if(usd < currentValue)
             {
                 Console.WriteLine("Недостаточно средств для совершения операции");
+            }
+            else if (currentValue * usdToRub < 0.1)
+            {
+                Console.WriteLine("Недопустимая операция. Минимальная сумма конвертации: 10 копеек");
             }
             else
             {
@@ -47,9 +51,13 @@ while (userInput != "exit")
         case "eurToRub":
             Console.WriteLine("Сколько евро желаете перевести в рубли?");
             currentValue = Convert.ToDouble(Console.ReadLine());
-            if ((currentValue * eurToRub) < 1)
+            if (eur < currentValue)
             {
                 Console.WriteLine("Недостаточно средств для совершения операции");
+            }
+            else if (currentValue * eurToRub < 0.1)
+            {
+                Console.WriteLine("Недопустимая операция. Минимальная сумма конвертации: 10 копеек");
             }
             else
             {
@@ -61,9 +69,13 @@ while (userInput != "exit")
         case "rubToUsd":
             Console.WriteLine("Сколько рублей желаете перевести в доллары?");
             currentValue = Convert.ToDouble(Console.ReadLine());
-            if ((currentValue * rubToUsd) <= 0.01)
+            if (rub < currentValue)
             {
                 Console.WriteLine("Недостаточно средств для совершения операции");
+            }
+            else if (currentValue * rubToUsd < 0.01)
+            {
+                Console.WriteLine("Недопустимая операция. Минимальная сумма конвертации: 1 цент");
             }
             else
             {
@@ -75,9 +87,13 @@ while (userInput != "exit")
         case "rubToEur":
             Console.WriteLine("Сколько рублей желаете перевести в евро?");
             currentValue = Convert.ToDouble(Console.ReadLine());
-            if ((currentValue * rubToEur) <= 0.01)
+            if (rub < currentValue)
             {
                 Console.WriteLine("Недостаточно средств для совершения операции");
+            }
+            else if (currentValue * rubToEur < 0.01)
+            {
+                Console.WriteLine("Недопустимая операция. Минимальная сумма конвертации: 1 евроцент");
             }
             else
             {
@@ -86,8 +102,47 @@ while (userInput != "exit")
                 Console.WriteLine($"Ваш баланс: {rub} рублей, {usd} долларов, {eur} евро");
             }
             break;
+        case "usdToEur":
+            Console.WriteLine("Сколько долларов желаете перевести в евро?");
+            currentValue = Convert.ToDouble(Console.ReadLine());
+            if (usd < currentValue)
+            {
+                Console.WriteLine("Недостаточно средств для совершения операции");
+            }
+            else if (currentValue * usdToEur < 0.01)
+            {
+                Console.WriteLine("Недопустимая операция. Минимальная сумма конвертации: 1 евроцент");
+            }
+            else
+            {
+                usd -= currentValue;
+                eur += (currentValue * usdToEur);
+                Console.WriteLine($"Ваш баланс: {rub} рублей, {usd} долларов, {eur} евро");
+            }
+            break;
+        case "eurToUsd":
+            Console.WriteLine("Сколько евро желаете перевести в доллары?");
+            currentValue = Convert.ToDouble(Console.ReadLine());
+            if (eur < currentValue)
+            {
+                Console.WriteLine("Недостаточно средств для совершения операции");
+            }
+            else if (currentValue * eurToUsd < 0.01)
+            {
+                Console.WriteLine("Недопустимая операция. Минимальная сумма конвертации: 1 цент");
+            }
+            else
+            {
+                eur -= currentValue;
+                usd += (currentValue * eurToUsd);
+                Console.WriteLine($"Ваш баланс: {rub} рублей, {usd} долларов, {eur} евро");
+            }
+            break;
+        case "exit":
+            
+            break;
         default:
-            Console.WriteLine("Не понимаю тебя баран е6аный");
+            Console.WriteLine("Не знаю такой команды");
             break;
     }
 }
